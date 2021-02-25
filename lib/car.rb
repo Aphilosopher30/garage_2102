@@ -2,6 +2,7 @@ class Car
   attr_reader :make, :model, :year, :age, :color
 
   @@current_year = 2021
+  @@all_cars = []
 
   def initialize(data)
     @data = data

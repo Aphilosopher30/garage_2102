@@ -16,9 +16,6 @@ class OwnerTest < Minitest::Test
 
   def test_it_has_attrabutes
 
-    # data = {description: 'Green Ford Mustang', year: '1967'}
-    # car = Car.new(data)
-
     owner = Owner.new('Regina George', 'Heiress')
 
     assert_equal "Regina George", owner.name
@@ -27,12 +24,27 @@ class OwnerTest < Minitest::Test
   end
 
   def test_buy_car
-    data = {description: 'Green Ford Mustang', year: '1967'}
-    car = Car.new(data)
 
     owner = Owner.new('Regina George', 'Heiress')
-    owner.buy(car)
+    owner.buy('1967 Green Ford Mustang')
 
-    assert_equal [car], owner.cars
+    assert_instance_of Car, owner.cars[0]
+    assert_equal 1, owner.cars.length
+
+    owner.buy('2001 Silver BMW 3-Series')
+
+    assert_instance_of Car, owner.cars[-1]
+    assert_equal 2, owner.cars.length
+
   end
+
+  def test_vintage_cars
+    owner = Owner.new('Regina George', 'Heiress')
+    owner.buy('1967 Green Ford Mustang')
+    owner.buy('2001 Silver BMW 3-Series')
+    owner.buy('1963 Red Chevrolet Corvette')
+
+    assert_equal 2, owner.vintage_cars.length
+  end
+
 end
