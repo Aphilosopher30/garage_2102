@@ -7,7 +7,10 @@ class Owner
     @cars = []
   end
 
-  
+  def buy(car)
+    @cars << car
+  end 
+
 
 
 

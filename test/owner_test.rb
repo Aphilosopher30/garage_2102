@@ -26,4 +26,13 @@ class OwnerTest < Minitest::Test
     assert_equal [], owner.cars
   end
 
+  def test_buy_car
+    data = {description: 'Green Ford Mustang', year: '1967'}
+    car = Car.new(data)
+
+    owner = Owner.new('Regina George', 'Heiress')
+    owner.buy(car)
+
+    assert_equal [car], owner.cars
+  end
 end
