@@ -2,9 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/car'
 
-require 'mocha/minitest'
-
-
 class CarTest < Minitest::Test
 
   def test_it_exists
